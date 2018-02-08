@@ -25,7 +25,7 @@ get '/analytics' do
   time_start_of_hour = (timestamp.to_i/MILLS_PER_HR)*MILLS_PER_HR
   time_end_of_hour = time_start_of_hour + MILLS_PER_HR - 1
   analytics_in_time_range = Analytic.where("ts BETWEEN ? AND ?", time_start_of_hour, time_end_of_hour)
-  unique_user_count = analytics_in_time_range.distinct("user").count
+  unique_user_count = analytics_in_time_range.distinct.count("user")
   click_count = analytics_in_time_range.where(event: "click").count
   impression_count = analytics_in_time_range.where(event: "impression").count
   "unique_users,#{unique_user_count}\nclicks,#{click_count}\nimpressions,#{impression_count}\n"
