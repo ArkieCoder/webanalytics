@@ -1,0 +1,11 @@
+source "http://rubygems.org"
+
+gem 'rake'
+
+gem 'sinatra', require: 'sinatra'
+
+gem 'sinatra-activerecord', require: 'sinatra/activerecord'
+
+gem 'pg', '~> 0.18'
+
+gem 'json'

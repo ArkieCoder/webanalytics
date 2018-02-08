@@ -1,0 +1,15 @@
+version: '2'
+services:
+  api:
+    build: ./api
+    ports:
+      - "8888:80"
+    volumes:
+      - ./api/app:/usr/src/app 
+      - ./flags:/flags
+    depends_on:
+      - db
+  db:
+    image: postgres
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
